@@ -16,7 +16,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-development = os.environ.get("DEVELOPMENT", False)
+#development = os.environ.get("DEVELOPMENT", False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,11 +31,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
-if development:
-    ALLOWED_HOSTS = ['localhost']
-else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+DEBUG = False #development
+#if development:
+    #ALLOWED_HOSTS = ['localhost']
+#else:
+    #ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 ALLOWED_HOSTS = ['8000-tolhursttech-djangoblog-v92rhzpizn2.ws-eu106.gitpod.io', '.herokuapp.com']
 
