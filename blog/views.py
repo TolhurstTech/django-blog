@@ -16,7 +16,8 @@ class PostList(generic.ListView):
 
 def post_detail(request, slug):
     """
-    Display an individual :model:`blog.Post` with it's comments and form to create/update comments.
+    Display an individual :model:`blog.Post` with it's comments
+    and form to create/update comments.
 
     **Context**
 
@@ -40,8 +41,8 @@ def post_detail(request, slug):
     comment_form = CommentForm()
 
     if request.method == "POST":
-        print("Received the POST request")
         comment_form = CommentForm(data=request.POST)
+
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.author = request.user
@@ -51,7 +52,7 @@ def post_detail(request, slug):
             request, messages.SUCCESS,
             'Comment submitted and awaiting approval'
         )
-    print("About to render template")
+
     return render(
         request,
         "blog/post_detail.html",
@@ -76,7 +77,6 @@ def comment_edit(request, slug, comment_id):
         A single comment related to the post.
     ``comment_form``
         An instance of :form:`blog.CommentForm`
-    
     '''
     if request.method == "POST":
         queryset = Post.objects.filter(status=1)
@@ -107,7 +107,7 @@ def comment_edit(request, slug, comment_id):
 def comment_delete(request, slug, comment_id):
     """
     Delete an indiviudal comment.
-    
+
     **Context**
 
     ``post``
