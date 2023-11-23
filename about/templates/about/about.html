@@ -6,7 +6,14 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-4 text-center">
-            <img src="{% static 'images/nobody.jpg' %}" width="75%">
+            {% if "placeholder" in about.profile_image.url %}
+                <img class="card-img-top profile-pic" src="{% static 'images/nobody.jpg' %}"
+                    alt="placeholder image">
+            {% else %}
+                <img class="card-img-top profile-pic" src=" {{ about.profile_image.url }}"
+                    alt="{{ post.title }}">
+            {% endif %}
+            
         </div>
         <div class="col-8">
             <!-- Title goes between these h2 tags -->
